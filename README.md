@@ -10,9 +10,33 @@
 Saarthi AI is an intelligent academic companion that simplifies complex course material for students at any proficiency level.
 
 - **Upload** a PDF/TXT document or paste raw text
-- **Simplify** it using IBM Granite LLM (`ibm/granite-3-3-8b-instruct`) at Beginner / Intermediate / Expert level
+- **Simplify** it using IBM Granite LLM (`ibm/granite-4-h-small`) at Beginner / Intermediate / Expert level
 - **Chat** with your document using a RAG pipeline (Retrieval-Augmented Generation)
 - **Multilingual** output: English, Hindi, Marathi, Tamil, Telugu, Bengali, Kannada
+
+---
+
+## 🚀 How to Run (for evaluators)
+
+### 1. Clone the repo
+```bash
+git clone https://github.com/Dikshant422/Atlas-AI.git
+cd Atlas-AI
+```
+
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the app
+```bash
+streamlit run app.py
+```
+
+Opens at **http://localhost:8501**
+
+> **No setup needed.** IBM Watsonx credentials are pre-configured in the code. The app connects to IBM Granite automatically on startup.
 
 ---
 
@@ -38,34 +62,6 @@ Text Extraction (pypdf)
 
 ---
 
-## 🚀 Quickstart
-
-### 1. Clone the repo
-```bash
-git clone https://github.com/Dikshant422/saarthi-ai.git
-cd saarthi-ai
-```
-
-### 2. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Configure credentials (optional)
-```bash
-cp .env.example .env
-# Edit .env and fill in your IBM Watsonx API key and Project ID
-```
-> **No credentials?** The app runs in **Demo/Mock Mode** automatically — no API key needed.
-
-### 4. Run the app
-```bash
-streamlit run app.py
-```
-Opens at **http://localhost:8501**
-
----
-
 ## 📦 Dependencies
 
 | Package | Purpose |
@@ -79,20 +75,6 @@ Opens at **http://localhost:8501**
 
 ---
 
-## 🔑 IBM Watsonx Setup
-
-1. Go to [https://cloud.ibm.com](https://cloud.ibm.com) → Log in
-2. Navigate to **Watsonx** → Your project → **Manage** → **API Keys**
-3. Copy your **API Key** and **Project ID** into `.env`:
-
-```env
-WATSONX_APIKEY=your_api_key_here
-WATSONX_PROJECT_ID=your_project_id_here
-WATSONX_URL=https://us-south.ml.cloud.ibm.com
-```
-
----
-
 ## 📁 Project Structure
 
 ```
@@ -100,7 +82,7 @@ saarthi-ai/
 ├── app.py              # Streamlit frontend UI
 ├── agent.py            # IBM Granite + FAISS RAG backend
 ├── requirements.txt    # Python dependencies
-├── .env.example        # Credentials template
+├── .env.example        # Credentials template (optional override)
 └── README.md
 ```
 
@@ -108,13 +90,12 @@ saarthi-ai/
 
 ## ✨ Features
 
-- 🤖 **IBM Granite LLM** — state-of-the-art IBM foundation model for text generation
+- 🤖 **IBM Granite LLM** — IBM foundation model (`ibm/granite-4-h-small`) via watsonx.ai
 - 📚 **RAG Architecture** — answers grounded strictly in uploaded study material
 - 🎯 **3 Proficiency Levels** — Beginner, Intermediate, Expert with tailored prompts
 - 🌐 **7 Indian Languages** — English, Hindi, Marathi, Tamil, Telugu, Bengali, Kannada
 - 🔍 **Jargon Buster** — auto-generates a glossary of technical terms
 - 💡 **Analogies** — explains every concept with a real-world example
-- 🟡 **Demo Mode** — works without credentials for offline demonstration
 
 ---
 
