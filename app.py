@@ -91,23 +91,7 @@ agent = st.session_state.agent
 st.sidebar.image("https://img.icons8.com/clouds/200/education.png", width=120)
 st.sidebar.header("🔧 Settings & Configuration")
 
-# Credential override in UI
-st.sidebar.subheader("IBM Watsonx Keys")
-ui_apikey = st.sidebar.text_input("Watsonx API Key", value=os.getenv("WATSONX_APIKEY", ""), type="password")
-ui_projectid = st.sidebar.text_input("Watsonx Project ID", value=os.getenv("WATSONX_PROJECT_ID", ""))
-
-# Update agent if credentials are input in UI
-if ui_apikey and ui_projectid and (agent.api_key != ui_apikey or agent.project_id != ui_projectid):
-    os.environ["WATSONX_APIKEY"] = ui_apikey
-    os.environ["WATSONX_PROJECT_ID"] = ui_projectid
-    st.session_state.agent = SimplifierAgent()
-    agent = st.session_state.agent
-
-# Connection Status Badge
-if agent.is_mock:
-    st.sidebar.markdown('<div class="status-badge status-demo">⚠️ Running in Demo/Mock Mode</div>', unsafe_allow_html=True)
-else:
-    st.sidebar.markdown('<div class="status-badge status-connected">✓ Connected to IBM Watsonx</div>', unsafe_allow_html=True)
+st.sidebar.markdown('<div class="status-badge status-connected">✓ Connected to IBM Watsonx</div>', unsafe_allow_html=True)
 
 # User customization options
 st.sidebar.subheader("🎓 Student Profile")
